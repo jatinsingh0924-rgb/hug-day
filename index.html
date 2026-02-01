@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Hug Day ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', cursive;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page {
+        text-align: center;
+        color: #fff;
+        padding: 40px;
+        max-width: 520px;
+        display: none;
+        animation: fadeIn 1.2s ease;
+        position: relative;
+        z-index: 2;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        opacity: 0.95;
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 14px 32px;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 30px;
+        background: #fff;
+        color: #ee6c7d;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+        background: #ffe6ea;
+    }
+
+    .emoji {
+        font-size: 4rem;
+        animation: hug 1.5s infinite;
+    }
+
+    @keyframes hug {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(1); }
+    }
+
+    img {
+        width: 260px;
+        border-radius: 20px;
+        margin-top: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        animation: floatUp linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>Happy Hug Day 🤍</h1>
+    <p>
+        My dear <b>bholi</b> 🌸<br><br>
+        Some days don’t need words,<br>
+        they just need arms around you.<br>
+        If I could gift you one thing today,<br>
+        it would be a hug that says:<br>
+        <i>“You are safe. You are loved. You are mine.”</i> 🤍
+    </p>
+    <button onclick="nextPage()">Click for more 🤍</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>Always Here 💞</h1>
+    <div class="emoji">🤗🤍🤗</div>
+    <p>
+        In my arms, may all your worries rest.<br>
+        In my hug, may your heart feel home.<br>
+        No matter the distance or time,<br>
+        this hug is forever… only for you 💖
+    </p>
+
+    <img src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif" alt="Hug GIF">
+</div>
+
+<script>
+    function nextPage() {
+        document.getElementById("page1").classList.remove("active");
+        document.getElementById("page2").classList.add("active");
+    }
+
+    // Create floating hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
